@@ -4,7 +4,7 @@ https://github.com/JackMcKew/pyinstaller-action-windows-example
 
 ## HOW TO SET UP
 
-### Step 0: In case you are new to github action
+### Step 1: In case you are new to github action
 
 ![](./doc/step-0-git.png)
 Then copy the code below:

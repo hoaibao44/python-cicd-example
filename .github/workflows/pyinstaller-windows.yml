@@ -10,15 +10,22 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "pypy3"]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: PyInstaller Windows
-      uses: JackMcKew/pyinstaller-action-windows@main
-      with:
-        path: src
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/checkout@v2
+      - name: PyInstaller Windows
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: src
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: my-exe
-        path: src/dist/windows # or path/to/artifact
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-exe
+          path: src/dist/windows # or path/to/artifact
